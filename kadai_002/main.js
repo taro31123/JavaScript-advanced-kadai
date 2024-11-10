@@ -114,11 +114,19 @@ const rankCheck = () => {
 const gameOver = (id) => {
   clearInterval(id);
 
-  const result = confirm(rankCheck(score));
-  //  OKボタンがクリックされたらリロードする
-  if (result == true) {
-    window.location.reload();
-  }
+  // タイムアップを表示
+  setTimeout(() => {
+    untypedfield.textContent = "タイムアップ！";
+
+    // ランクチェックのダイアログを表示
+    setTimeout(() => {
+      const result = confirm(rankCheck(score));
+      //  OKボタンがクリックされたらリロードする
+      if (result == true) {
+        window.location.reload();
+      }
+    }, 100); //ランクチェックは100ms後に表示
+  }, 10); //タイムアップは10ms後に表示
 };
 
 // カウントダウンタイマー
